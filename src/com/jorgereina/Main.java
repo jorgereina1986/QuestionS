@@ -7,25 +7,26 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        //Sort by String
-//        System.out.println(sortByStrings("weather", "theeraw"));
-//
+        //Sort by String
+        System.out.println("Sort by string");
+        System.out.println(sortByStrings("weather", "theeraw") + "\n");
+
         //Decode String
+        System.out.println("Decode String");
         System.out.println(decodeString("4[ab]"));
-        System.out.println(decodeString("2[b3[a]]"));
-//
-//        //Change possibilities
-//        System.out.println(changePossibilities(4, new int[]{1, 2, 3}, 0));
+        System.out.println(decodeString("2[b3[a]]")+ "\n");
 
-
+        //Change possibilities
+        System.out.println("Change possibilities");
+        System.out.println(changePossibilities(4, new int[]{1, 2, 3}, 0));
     }
 
     /**
      * Question 1
-     * sortByStrings(s,t): Sort the letters in the string s by the order they occur in the string t.
-     * You can assume t will not have repetitive characters. For s = "weather" and t = "therapyw",
-     * the output should be sortByString(s, t) = "theeraw". For s = "good" and t = "odg",
-     * the output should be sortByString(s, t) = "oodg".
+     * sortByStrings(s,order): Sort the letters in the string s by the order they occur in the string order.
+     * You can assume order will not have repetitive characters. For s = "weather" and order = "therapyw",
+     * the output should be sortByString(s, order) = "theeraw". For s = "good" and order = "odg",
+     * the output should be sortByString(s, order) = "oodg".
      */
 
     private static String sortByStrings(String s, String t) {
@@ -91,7 +92,6 @@ public class Main {
                     integerStack.pop();
                 }
 
-
                 while (!characterStack.isEmpty() && characterStack.peek() != '[') {
                     temp = characterStack.peek() + temp;
                     characterStack.pop();
@@ -120,7 +120,8 @@ public class Main {
                     characterStack.push(s.charAt(i));
                     integerStack.push(1);
                 }
-            } else {
+            }
+            else {
                 characterStack.push(s.charAt(i));
             }
         }
@@ -174,25 +175,29 @@ public class Main {
      */
     public static class CustomComparator implements Comparator<Character> {
 
-        String t;
+        String order;
 
-        public CustomComparator(String t) {
-            this.t = t;
+        public CustomComparator(String order) {
+            this.order = order;
         }
 
         @Override
         public int compare(Character a, Character b) {
 
-            if (t.contains("" + a) && !t.contains("" + b)) {
+            if (order.contains("" + a) && !order.contains("" + b)) {
                 return -1;
-            } else if (!t.contains("" + a) && t.contains("" + b)) {
+            }
+            else if (!order.contains("" + a) && order.contains("" + b)) {
                 return 1;
-            } else if (a == b) {
+            }
+            else if (a == b) {
                 return 0;
-            } else if (t.contains("" + a) && t.contains("" + b)) {
-                if (t.indexOf("" + a) > t.indexOf("" + b)) {
+            }
+            else if (order.contains("" + a) && order.contains("" + b)) {
+                if (order.indexOf("" + a) > order.indexOf("" + b)) {
                     return 1;
-                } else {
+                }
+                else {
                     return -1;
                 }
             }
