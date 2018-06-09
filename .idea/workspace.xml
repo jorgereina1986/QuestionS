@@ -20,12 +20,13 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jorgereina/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="55" column="8" lean-forward="false" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+            <state relative-caret-position="73">
+              <caret line="146" column="10" lean-forward="true" selection-start-line="146" selection-start-column="10" selection-end-line="146" selection-end-column="10" />
               <folding>
+                <element signature="method#sortByStrings#0;class#Main#0" expanded="false" />
                 <element signature="class#CustomComparator#0;class#Main#0" expanded="false" />
-                <element signature="e#3197#3198#0" expanded="true" />
-                <element signature="e#3231#3232#0" expanded="true" />
+                <element signature="e#5964#5965#0" expanded="true" />
+                <element signature="e#5998#5999#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -39,6 +40,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>temp</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -215,16 +221,14 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/jorgereina/Main.java</url>
-          <line>74</line>
-          <properties class="com.jorgereina.Main" method="changePossibilities">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="5" />
+          <line>120</line>
+          <properties />
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="6" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -263,12 +267,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jorgereina/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="55" column="8" lean-forward="false" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+        <state relative-caret-position="73">
+          <caret line="146" column="10" lean-forward="true" selection-start-line="146" selection-start-column="10" selection-end-line="146" selection-end-column="10" />
           <folding>
+            <element signature="method#sortByStrings#0;class#Main#0" expanded="false" />
             <element signature="class#CustomComparator#0;class#Main#0" expanded="false" />
-            <element signature="e#3197#3198#0" expanded="true" />
-            <element signature="e#3231#3232#0" expanded="true" />
+            <element signature="e#5964#5965#0" expanded="true" />
+            <element signature="e#5998#5999#0" expanded="true" />
           </folding>
         </state>
       </provider>

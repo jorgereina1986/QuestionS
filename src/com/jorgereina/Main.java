@@ -7,15 +7,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Sort by String
-        System.out.println(sortByStrings("weather", "theeraw"));
-
+//        //Sort by String
+//        System.out.println(sortByStrings("weather", "theeraw"));
+//
         //Decode String
         System.out.println(decodeString("4[ab]"));
         System.out.println(decodeString("2[b3[a]]"));
+//
+//        //Change possibilities
+//        System.out.println(changePossibilities(4, new int[]{1, 2, 3}, 0));
 
-        //Change possibilities
-        System.out.println(changePossibilities(4, new int[]{1, 2, 3}, 0));
+
     }
 
     /**
@@ -36,8 +38,7 @@ public class Main {
         Arrays.sort(arr, new CustomComparator(t));
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < arr.length; i++) {
-            char ch = arr[i];
+        for (Character ch : arr) {
             sb.append(ch);
         }
         return sb.toString();
@@ -52,13 +53,91 @@ public class Main {
      * For s = "2[b3[a]]", the output should be decodeString(s) = "baaabaaa"
      */
 
-    private static String decodeString(String str) {
-        
+    private static String decodeString(String s) {
+
+        //push number to stack
+        //push letters to char stack
+        // if its a close bracket pop char from char stack until open bracket is found
+        //Pop top element from integer stack, (n)
+        //make string repeating the popped chars N numbers of time
+        //push all chars of the string in the stack
+
+        Stack<Integer> integerStack = new Stack<>();
+        Stack<Character> characterStack = new Stack<>();
+
+        String result = "";
+        String temp = "";
+
+        // iterate through the string
+        for (int i = 0; i < s.length(); i++) {
+            int count = 0;
+
+            // If number push it to integer stack
+            if (Character.isDigit(s.charAt(i))) {
+                while (Character.isDigit(s.charAt(i))) {
+                    count = count * 10 + s.charAt(i) - '0';
+                    i++;
+                }
+                i--;
+                integerStack.push(count);
+            }
+            // If closing bracket ']', pop element until opening bracket is found in the character stack.
+            else if (s.charAt(i) == ']') {
+                temp = "";
+                count = 0;
+                //if is not open bracket keep popping
+                if (!integerStack.isEmpty()) {
+                    count = integerStack.peek();
+                    integerStack.pop();
+                }
+
+
+                while (!characterStack.isEmpty() && characterStack.peek() != '[') {
+                    temp = characterStack.peek() + temp;
+                    characterStack.pop();
+                }
+
+                //pop element until open bracket
+                if (!characterStack.empty() && characterStack.peek() == '[') {
+                    characterStack.pop();
+                }
+                // Repeating the popped string 'temp' count
+                // number of times.
+                for (int j = 0; j < count; j++)
+                    result = result + temp;
+
+                // Push it in the character stack.
+                for (int j = 0; j < result.length(); j++)
+                    characterStack.push(result.charAt(j));
+
+                result = "";
+            }
+            // If '[' opening bracket, push it into character stack.
+            else if (s.charAt(i) == '[') {
+                if (Character.isDigit(s.charAt(i - 1))) {
+                    characterStack.push(s.charAt(i));
+                } else {
+                    characterStack.push(s.charAt(i));
+                    integerStack.push(1);
+                }
+            } else {
+                characterStack.push(s.charAt(i));
+            }
+        }
+
+        // return results
+        while (!characterStack.isEmpty()) {
+            result = characterStack.peek() + result;
+            characterStack.pop();
+        }
+
+        return result;
     }
 
 
     /**
      * Question 3
+     * <p>
      * changePossibilities(amount,amount): Your quirky boss collects rare, old coins.
      * They found out you're a programmer and asked you to solve something they've been wondering for a long time.
      * Write a function that, given an amount of money and an array of coin denominations,
@@ -71,7 +150,6 @@ public class Main {
      * 1¢, 3¢
      * 2¢, 2¢
      */
-
     private static int changePossibilities(int amount, int[] denominations, int current) {
 
         int combinations = 0;
